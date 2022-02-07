@@ -23,7 +23,11 @@ def equalized_focal_loss(logits: Tensor,
 
     targets = targets.view(-1, 1)  # 多加一个维度，为使用 gather 函数做准备
     grad_i = torch.autograd.grad(outputs=-outputs, inputs=logits)[0]  # 求导
-    grad_i = grad_i.gather(1, targets)  # 每个类对应的梯度（这里没使用比率）
+    grad_i = grad_i.gather(1, targets)  # 每个类对应的梯度
+    pos_grad_i = F.relu(grad_i).sum()
+    neg_grad_i = F.relu(-grad_i).sum()
+    neg_grad_i += 1e-9  # 防止除数为0
+    grad_i = pos_grad_i / neg_grad_i
     grad_i = torch.clamp(grad_i, min=0, max=1)  # 裁剪梯度
 
     dy_gamma = gamma_b + scale_factor * (1 - grad_i)
