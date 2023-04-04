@@ -15,3 +15,8 @@ latex 公式：
 $$
 \operatorname{EFL}\left(p_{\mathrm{t}}\right)=-\sum_{j=1}^{C} \alpha_{\mathrm{t}}\left(\frac{\gamma_{b}+\gamma_{v}^{j}}{\gamma_{b}}\right)\left(1-p_{\mathrm{t}}\right)^{\gamma_{b}+\gamma_{v}^{j}} \log \left(p_{\mathrm{t}}\right)
 $$
+
+
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=tcmyxc/Equalized-Focal-Loss&type=Date)](https://star-history.com/#tcmyxc/Equalized-Focal-Loss&Date)
